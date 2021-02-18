@@ -36,25 +36,23 @@ const enterNumber = () => {
     });
 };
 
-const continueGame = () => {
-    return new Promise((resolve, reject) => {
-        if (window.confirm('Do you want to continue?')) {
-            resolve(true);
-        } else {
-            resolve(false);
-        }
-    });
+const continueGame = async () => {
+    if (window.confirm('Do you want to continue?')) {
+        return true;
+    } else {
+        return false;
+    }
 };
 
 const restartGame = () => {
     return continueGame()
-            .then(result => {
-                if (result) {
-                    handleGuess();
-                } else {
-                    alert('Thanks for playing!');
-                }
-            });
+        .then(result => {
+            if (result) {
+                handleGuess();
+            } else {
+                alert('Thanks for playing!');
+            }
+        });
 };
 
 const handleGuess = () => {
